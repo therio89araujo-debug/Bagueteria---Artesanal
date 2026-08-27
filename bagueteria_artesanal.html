@@ -1,0 +1,2264 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bagueteria Artesanal - Sabor, Tradição & Delivery</title>
+  
+  <!-- Tailwind CSS Engine -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fontes do Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-brown: #381B0E;
+      --secondary-brown: #572A14;
+      --accent-orange: #E86328;
+      --bg-cream: #FAF7F2;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-cream);
+      color: #2D241E;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Keyframe Animations */
+    @keyframes pulse-subtle {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(232, 99, 40, 0.45);
+      }
+      50% {
+        transform: scale(1.035);
+        box-shadow: 0 0 0 10px rgba(232, 99, 40, 0);
+      }
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.6; }
+    }
+
+    @keyframes float-slow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes shimmer-sweep {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(200%); }
+    }
+
+    @keyframes slideDownFade {
+      0% { opacity: 0; transform: translateY(-16px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes cardCascade {
+      0% { opacity: 0; transform: translateY(20px) scale(0.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes cartBounce {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.25) rotate(-6deg); }
+      50% { transform: scale(1.15) rotate(6deg); }
+      75% { transform: scale(1.05); }
+    }
+
+    @keyframes rippleAnim {
+      0% { width: 0px; height: 0px; opacity: 0.8; }
+      100% { width: 300px; height: 300px; opacity: 0; }
+    }
+
+    /* Animação Pop Bounce Divertida para a Notificação de Entrada */
+    @keyframes popBounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-8deg) translateY(60px);
+      }
+      60% {
+        opacity: 1;
+        transform: scale(1.06) rotate(3deg) translateY(-8px);
+      }
+      80% {
+        transform: scale(0.96) rotate(-1deg) translateY(2px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg) translateY(0);
+      }
+    }
+
+    @keyframes baguetteWiggle {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      25% { transform: rotate(-10deg) scale(1.15); }
+      50% { transform: rotate(10deg) scale(1.15); }
+      75% { transform: rotate(-6deg) scale(1.08); }
+    }
+
+    @keyframes steamRise {
+      0% { transform: translateY(0) scale(0.8); opacity: 0.8; }
+      50% { opacity: 0.5; }
+      100% { transform: translateY(-24px) scale(1.4); opacity: 0; }
+    }
+
+    .animate-pop-welcome {
+      animation: popBounceIn 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .animate-baguette-wiggle {
+      animation: baguetteWiggle 1.8s infinite ease-in-out;
+    }
+
+    .animate-steam-1 {
+      animation: steamRise 1.6s infinite ease-out;
+    }
+    .animate-steam-2 {
+      animation: steamRise 1.9s infinite ease-out 0.4s;
+    }
+    .animate-steam-3 {
+      animation: steamRise 1.7s infinite ease-out 0.8s;
+    }
+
+    .animate-pulse-cta {
+      animation: pulse-subtle 2.2s infinite ease-in-out;
+    }
+
+    .animate-dot-pulse {
+      animation: pulse-dot 1.8s infinite ease-in-out;
+    }
+
+    .animate-float {
+      animation: float-slow 3.2s infinite ease-in-out;
+    }
+
+    .animate-banner-in {
+      animation: slideDownFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .cart-bounce-effect {
+      animation: cartBounce 0.5s ease-out;
+    }
+
+    /* GPS Ripple Button */
+    .gps-btn {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gps-btn .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.65);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      animation: rippleAnim 0.65s linear;
+    }
+
+    /* Shimmer Effect */
+    .shimmer-container {
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+      transform: translateX(-100%);
+    }
+    .shimmer-container:hover::after {
+      animation: shimmer-sweep 1s ease-in-out;
+    }
+
+    /* Category Pill Hover Zoom */
+    .category-btn {
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .category-btn:hover {
+      transform: translateY(-2px) scale(1.08);
+      box-shadow: 0 8px 18px -4px rgba(104, 48, 21, 0.2);
+    }
+
+    /* Floating feedback */
+    .flying-tag {
+      position: fixed;
+      pointer-events: none;
+      font-weight: bold;
+      color: #E86328;
+      z-index: 9999;
+      animation: flyUp 0.8s ease-out forwards;
+    }
+
+    @keyframes flyUp {
+      0% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-40px) scale(1.4); }
+    }
+
+    /* Confete Canvas */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 99999;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar-track { background: #F1ECE4; }
+    ::-webkit-scrollbar-thumb { background: #D5BCA9; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #B69279; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col pb-28 antialiased selection:bg-orange-200 selection:text-amber-950">
+
+  <!-- Canvas de Confetes Animados -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- ========================================================================= -->
+  <!-- NOTIFICAÇÃO ANIMADA E DIVERTIDA DE ENTRADA (POPUP DE BOAS-VINDAS)         -->
+  <!-- ========================================================================= -->
+  <div id="welcome-modal-overlay" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4 transition-opacity duration-300">
+    <div id="welcome-card" class="bg-gradient-to-b from-amber-50 via-white to-orange-50/80 rounded-3xl max-w-sm sm:max-w-md w-full p-6 sm:p-7 shadow-2xl border-2 border-orange-400 text-center relative overflow-hidden">
+      
+      <!-- Detalhes de Fundo Festivo -->
+      <div class="absolute -top-10 -right-10 w-28 h-28 bg-orange-300/30 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="absolute -bottom-10 -left-10 w-28 h-28 bg-amber-400/25 rounded-full blur-2xl pointer-events-none"></div>
+
+      <!-- Botão Fechar X -->
+      <button onclick="closeWelcomeModal()" class="absolute top-3.5 right-3.5 text-stone-400 hover:text-stone-700 bg-white/80 hover:bg-stone-100 p-1.5 rounded-full transition shadow-sm cursor-pointer z-10" title="Fechar">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <!-- Mascote Animado: Baguete Quentinha com Fumaça -->
+      <div class="relative w-24 h-24 mx-auto mb-2 flex items-center justify-center">
+        <!-- Fumacinha do Forno -->
+        <span class="animate-steam-1 absolute -top-1 left-7 text-stone-400 text-sm">♨️</span>
+        <span class="animate-steam-2 absolute -top-3 left-11 text-stone-400 text-base">♨️</span>
+        <span class="animate-steam-3 absolute -top-1 right-7 text-stone-400 text-sm">♨️</span>
+        
+        <!-- Emblema do Mascote Saltitante -->
+        <div class="animate-baguette-wiggle w-20 h-20 rounded-3xl bg-gradient-to-tr from-amber-800 via-amber-700 to-orange-500 p-1 shadow-xl ring-4 ring-orange-300/60 flex items-center justify-center">
+          <div class="w-full h-full rounded-2xl bg-[#33180b] flex flex-col items-center justify-center text-3xl">
+            🥖
+          </div>
+        </div>
+
+        <!-- Brilhos Animados -->
+        <span class="absolute -bottom-1 -right-1 text-lg animate-bounce">✨</span>
+        <span class="absolute -top-1 -left-1 text-lg animate-pulse">🎉</span>
+      </div>
+
+      <!-- Textos da Notificação -->
+      <div class="inline-block bg-orange-100 text-orange-800 text-[10px] sm:text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full mb-2 border border-orange-300 shadow-sm">
+        🔥 Pão Quentinho Acabou de Sair!
+      </div>
+
+      <h3 class="text-xl sm:text-2xl font-black text-amber-950 font-heading leading-tight">
+        Seja bem-vindo(a) à Bagueteria Artesanal!
+      </h3>
+
+      <p class="text-xs sm:text-sm text-stone-600 mt-2 leading-relaxed font-medium">
+        Preparamos um presente especial para o seu primeiro pedido: <strong class="text-orange-700">FRETE GRÁTIS</strong> para você provar o melhor pão crocante da cidade!
+      </p>
+
+      <!-- Cartão do Cupom Destacado -->
+      <div class="mt-4 p-3 bg-gradient-to-r from-amber-100 via-orange-100 to-amber-100 rounded-2xl border border-dashed border-orange-400 flex items-center justify-between gap-2 shadow-inner">
+        <div class="text-left pl-1">
+          <span class="text-[10px] text-stone-500 font-bold uppercase block">Seu Cupom de Boas-Vindas:</span>
+          <span class="font-mono text-base font-extrabold text-amber-950 tracking-wider">PRIMEIRABAGUETE</span>
+        </div>
+        <button onclick="claimWelcomeCoupon()" class="bg-amber-950 hover:bg-orange-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl transition shadow active:scale-95 flex items-center gap-1">
+          <span id="welcome-btn-copy-text">Copiar Cupom</span>
+          <span>🎁</span>
+        </button>
+      </div>
+
+      <!-- Botões de Ação -->
+      <div class="mt-4 space-y-2">
+        <button onclick="claimWelcomeCouponAndGo()" class="w-full bg-gradient-to-r from-orange-600 to-amber-700 hover:from-orange-500 hover:to-amber-600 text-white font-black py-3 rounded-2xl text-xs sm:text-sm shadow-lg shadow-orange-950/20 transform transition active:scale-95 cursor-pointer flex items-center justify-center gap-2">
+          <span>😋 Ver Cardápio & Escolher Baguete</span>
+          <span>→</span>
+        </button>
+        <button onclick="closeWelcomeModal()" class="text-xs font-semibold text-stone-400 hover:text-stone-700 py-1 transition">
+          Só estou dando uma olhadinha por enquanto
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- BARRA SUPERIOR DE AUTENTICAÇÃO / MODO ADMIN                               -->
+  <!-- ========================================================================= -->
+  <div id="admin-top-bar" class="hidden bg-stone-900 text-amber-300 text-xs py-2 px-4 border-b border-amber-500/30 flex items-center justify-between z-50">
+    <div class="flex items-center gap-2 max-w-6xl mx-auto w-full justify-between">
+      <div class="flex items-center gap-2">
+        <span class="bg-amber-500 text-stone-950 font-extrabold px-2 py-0.5 rounded text-[10px] tracking-wider uppercase">Modo Admin Ativo</span>
+        <span class="text-stone-300 hidden sm:inline">Você pode alterar horários, preços e configurações.</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="openAdminModal()" class="bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold px-3 py-1 rounded-lg text-xs transition">
+          ⚙️ Painel de Gestão
+        </button>
+        <button onclick="logoutAdmin()" class="bg-stone-800 hover:bg-stone-700 text-stone-300 px-2.5 py-1 rounded-lg text-xs transition">
+          Sair do Admin
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra de Informações do Usuário / Login Rápido -->
+  <div class="bg-[#2a1309] text-amber-100 text-xs py-1.5 px-4 border-b border-amber-900/40">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-2">
+      <!-- Info do Cliente Logado -->
+      <div id="customer-header-info" class="flex items-center gap-2 truncate">
+        <span class="text-stone-400">👋 Bem-vindo(a) à Bagueteria!</span>
+      </div>
+
+      <!-- Botões de Ação de Usuário e Admin -->
+      <div class="flex items-center gap-2 shrink-0">
+        <!-- Botão Cliente -->
+        <button id="customer-auth-btn" onclick="openCustomerAuthModal()" class="flex items-center gap-1.5 bg-amber-950/80 hover:bg-amber-900 text-amber-200 border border-amber-700/50 px-3 py-1 rounded-full text-xs font-semibold transition cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+          </svg>
+          <span id="customer-btn-label">👤 Entrar / Cadastrar</span>
+        </button>
+
+        <!-- Botão Admin -->
+        <button onclick="openAdminLoginModal()" title="Acesso do Administrador" class="text-amber-400 hover:text-amber-200 text-xs px-2 py-1 rounded hover:bg-white/10 transition flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+          <span class="hidden md:inline">Lojista</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 1. CABEÇALHO ESTRATÉGICO (HEADER)                                         -->
+  <!-- ========================================================================= -->
+  <header class="relative text-white shadow-xl bg-gradient-to-r from-[#381B0E] via-[#5C2B14] to-[#E26426] border-b border-amber-900/40">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-5 pb-6 relative z-10">
+      
+      <!-- Top Row: Status / Contato + CTA Principal -->
+      <div class="flex items-center justify-between gap-3 mb-4">
+        
+        <!-- Status & Telefone -->
+        <div class="flex items-center flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm">
+          
+          <!-- Badge com Automação de Horários (Clicável para ver Horários) -->
+          <button id="store-status-badge" onclick="openHoursModal()" title="Clique para ver a tabela completa de horários de funcionamento" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full shadow-inner backdrop-blur-sm transition-all duration-300 cursor-pointer transform hover:scale-105 active:scale-95">
+            <span id="store-status-dot" class="w-2.5 h-2.5 rounded-full inline-block"></span>
+            <span id="store-status-text" class="font-semibold">Calculando...</span>
+            <span class="text-[10px] opacity-70 ml-0.5">ℹ️</span>
+          </button>
+
+          <!-- Telefone -->
+          <a id="header-phone-link" href="tel:5561996479133" class="inline-flex items-center gap-1.5 text-amber-100/90 hover:text-white bg-black/25 hover:bg-black/40 px-3 py-1 rounded-full border border-white/10 transition-colors">
+            <svg class="w-3.5 h-3.5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            <span id="store-phone-display" class="font-medium tracking-wide">(61) 99647-9133</span>
+          </a>
+        </div>
+
+        <!-- CTA Principal: Faça seu Pedido -->
+        <button onclick="scrollToMenu()" class="animate-pulse-cta shimmer-container inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-500 hover:to-orange-500 text-white font-bold text-xs sm:text-sm px-4 sm:px-6 py-2.5 rounded-full shadow-lg shadow-orange-950/40 border border-orange-300/40 transform transition active:scale-95 cursor-pointer">
+          <svg class="w-4 h-4 text-amber-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+          </svg>
+          <span class="tracking-wide uppercase text-[11px] sm:text-xs">Faça seu pedido</span>
+        </button>
+      </div>
+
+      <!-- Centro: Logotipo Elegante da Bagueteria Artesanal -->
+      <div class="text-center my-3 sm:my-4 flex flex-col items-center">
+        <div class="relative group cursor-pointer" onclick="scrollToTop()">
+          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-amber-700 via-amber-900 to-black p-1 shadow-2xl ring-4 ring-orange-400/30 flex items-center justify-center transform group-hover:rotate-1 group-hover:scale-105 transition duration-300">
+            <div class="w-full h-full rounded-xl bg-[#2b1206] border border-amber-500/40 flex flex-col items-center justify-center p-1 text-center">
+              <span class="text-2xl sm:text-3xl">🥖</span>
+              <span class="text-[8px] sm:text-[9px] font-black tracking-widest text-orange-400 uppercase leading-none mt-0.5">ARTESANAL</span>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-amber-50 mt-2.5 drop-shadow-md font-heading">
+          Bagueteria Artesanal
+        </h1>
+        <p class="text-xs sm:text-sm text-orange-200/90 font-medium tracking-wide">
+          Pães de fermentação natural • Recheios nobres e grelhados no ponto
+        </p>
+      </div>
+
+      <!-- Linha Inferior do Header: Endereço + Funcionalidade GPS Integrada -->
+      <div class="mt-4 pt-3 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left text-xs sm:text-sm text-amber-100/90">
+        <div class="flex items-center justify-center sm:justify-start gap-2">
+          <svg class="w-4 h-4 text-orange-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          <span id="store-address-display" class="font-medium">Quadra 13 Comércio Local 10, 13 - Sobradinho (Brasília, DF)</span>
+        </div>
+
+        <button id="gps-action-btn" onclick="openGpsModal(event)" class="gps-btn shimmer-container inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-amber-950 font-bold px-4 py-2 rounded-xl shadow-md transition-all duration-200 transform hover:scale-105 active:scale-95 border border-amber-200">
+          <svg class="w-4 h-4 text-amber-900" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          <span class="font-extrabold text-xs uppercase tracking-wider">Abrir no GPS</span>
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-amber-950"></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- AVISO SUTIL DE HORÁRIO / LOJA FECHADA (QUANDO APLICÁVEL)                  -->
+  <!-- ========================================================================= -->
+  <div id="closed-warning-banner" class="hidden bg-stone-900 text-stone-200 py-2 px-4 text-xs border-b border-stone-800">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <span class="text-amber-400 text-sm">🌙</span>
+        <span>
+          <strong class="text-amber-300">Fora do horário de entrega.</strong> 
+          <span id="closed-warning-detail">Nosso forno acende às 18:00!</span> 
+          Você pode montar seu pedido agora e enviar pré-agendado no WhatsApp.
+        </span>
+      </div>
+      <button onclick="openHoursModal()" class="text-amber-400 hover:underline font-bold shrink-0">
+        Ver Horários 🕒
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 2. BANNER PROMOCIONAL (FOCO EM MARKETING)                                  -->
+  <!-- ========================================================================= -->
+  <aside id="promo-banner" class="animate-banner-in bg-gradient-to-r from-amber-200 via-amber-100 to-orange-100 border-b border-amber-300 text-amber-950 py-2.5 px-4 shadow-sm relative z-20 transition-all duration-500">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-3 text-xs sm:text-sm font-semibold">
+      <div class="flex items-center flex-wrap gap-2 text-center sm:text-left mx-auto sm:mx-0">
+        <span class="text-base sm:text-lg">🎉</span>
+        <span class="text-amber-900">
+          <strong>FRETE GRÁTIS</strong> na sua 1ª compra! Use o cupom:
+        </span>
+        <button onclick="copyCoupon(storeConfig.activeCoupon)" class="inline-flex items-center gap-1.5 bg-amber-900 hover:bg-amber-800 text-amber-100 px-2.5 py-1 rounded-lg text-xs font-mono font-bold tracking-wider shadow-sm transition active:scale-95 group">
+          <span id="coupon-text">PRIMEIRABAGUETE</span>
+          <svg class="w-3.5 h-3.5 opacity-70 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+          </svg>
+        </button>
+        <span id="copy-feedback" class="text-xs text-emerald-700 font-bold hidden animate-pulse">✓ Copiado!</span>
+      </div>
+
+      <button onclick="closePromoBanner()" title="Fechar banner" class="text-amber-700 hover:text-amber-950 hover:bg-amber-200/60 p-1.5 rounded-full transition cursor-pointer">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========================================================================= -->
+  <!-- 3. BARRA DE CATEGORIAS ANIMADA                                            -->
+  <!-- ========================================================================= -->
+  <section class="sticky top-0 z-30 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-amber-900/10 py-3.5 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center gap-2.5 sm:gap-4 overflow-x-auto pb-1.5 scrollbar-none no-scrollbar justify-start sm:justify-center">
+        
+        <button onclick="filterCategory('baguetes', this)" class="category-btn category-pill active bg-[#572A14] text-white flex items-center gap-2.5 px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold shadow-md cursor-pointer border border-amber-900/30 shrink-0">
+          <span class="text-lg">🥖</span>
+          <span>Baguetes</span>
+        </button>
+
+        <button onclick="filterCategory('hamburguer', this)" class="category-btn category-pill bg-white text-stone-700 hover:text-amber-900 hover:bg-orange-50 flex items-center gap-2.5 px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold shadow-sm cursor-pointer border border-amber-900/10 shrink-0">
+          <span class="text-lg">🍔</span>
+          <span>Hambúrguer</span>
+        </button>
+
+        <button onclick="filterCategory('refrigerantes', this)" class="category-btn category-pill bg-white text-stone-700 hover:text-amber-900 hover:bg-orange-50 flex items-center gap-2.5 px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold shadow-sm cursor-pointer border border-amber-900/10 shrink-0">
+          <span class="text-lg">🥤</span>
+          <span>Refrigerantes</span>
+        </button>
+
+        <button onclick="filterCategory('cervejas', this)" class="category-btn category-pill bg-white text-stone-700 hover:text-amber-900 hover:bg-orange-50 flex items-center gap-2.5 px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold shadow-sm cursor-pointer border border-amber-900/10 shrink-0">
+          <span class="text-lg">🍺</span>
+          <span>Cervejas</span>
+        </button>
+
+        <button onclick="filterCategory('sucos', this)" class="category-btn category-pill bg-white text-stone-700 hover:text-amber-900 hover:bg-orange-50 flex items-center gap-2.5 px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold shadow-sm cursor-pointer border border-amber-900/10 shrink-0">
+          <span class="text-lg">🧃</span>
+          <span>Sucos</span>
+        </button>
+
+        <button onclick="filterCategory('combos', this)" class="category-btn category-pill bg-white text-stone-700 hover:text-amber-900 hover:bg-orange-50 flex items-center gap-2.5 px-4 py-2 rounded-2xl text-xs sm:text-sm font-bold shadow-sm cursor-pointer border border-amber-900/10 shrink-0">
+          <span class="text-lg">🍟</span>
+          <span>Combos</span>
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 4. GRADE DE PRODUTOS DINÂMICA (VITRINE ATRAENTE)                          -->
+  <!-- ========================================================================= -->
+  <main id="menu-section" class="max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-12 flex-1 w-full">
+    
+    <div class="flex flex-col sm:flex-row items-center justify-between mb-7 gap-3">
+      <div class="text-center sm:text-left">
+        <h2 id="category-heading" class="text-2xl sm:text-3xl font-extrabold text-amber-950 font-heading">
+          Baguetes Artesanais
+        </h2>
+        <p id="category-subheading" class="text-sm text-stone-500 mt-1 font-medium">
+          Baguetes de 22cm no pão crocante e recheios suculentos feitos na brasa e no tacho
+        </p>
+      </div>
+
+      <!-- Botão Rápido para Admin Adicionar Produto -->
+      <div id="admin-add-btn-wrapper" class="hidden shrink-0">
+        <button onclick="openProductEditModal(null)" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 py-2 rounded-xl shadow flex items-center gap-1.5 transition">
+          <span>➕ Adicionar Produto</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Grade Responsiva: 2 Colunas Desktop, 1 Coluna Mobile -->
+    <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+      <!-- Renderizado dinamicamente via JS -->
+    </div>
+
+    <!-- Mensagem de Nenhum Item Encontrado -->
+    <div id="no-results" class="hidden text-center py-12">
+      <span class="text-4xl">🔍</span>
+      <h3 class="text-lg font-bold text-stone-800 mt-2">Nenhum item encontrado</h3>
+      <p class="text-sm text-stone-500">Tente buscar por "costela", "picanha", "frango" ou limpe a busca.</p>
+      <button onclick="resetSearch()" class="mt-3 text-xs font-bold text-orange-600 hover:underline">Ver todo o cardápio</button>
+    </div>
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- 5. ATENDIMENTO RÁPIDO (BOTÃO FLUTUANTE DE CHAT / WHATSAPP)                 -->
+  <!-- ========================================================================= -->
+  <div class="fixed bottom-24 right-4 sm:right-6 z-40 flex flex-col items-end">
+    <div class="bg-stone-900 text-white text-[11px] font-semibold py-1 px-3 rounded-full shadow-lg mb-2 opacity-90 backdrop-blur-sm flex items-center gap-1.5 animate-bounce hidden sm:flex">
+      <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+      <span>Dúvidas? Fale conosco!</span>
+    </div>
+
+    <a id="floating-whatsapp-btn" href="https://wa.me/5561996479133?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido%20na%20Bagueteria%20Artesanal!" target="_blank" rel="noopener noreferrer" title="Atendimento via WhatsApp" class="animate-float w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-emerald-600 to-green-500 text-white shadow-2xl flex items-center justify-center transform hover:scale-110 transition duration-300 ring-4 ring-emerald-300/40 cursor-pointer">
+      <svg class="w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 5. RODAPÉ FLUTUANTE (STICKY BOTTOM BAR)                                   -->
+  <!-- ========================================================================= -->
+  <nav class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-amber-900/15 shadow-[0_-8px_25px_rgba(0,0,0,0.08)] py-2.5 px-3 sm:px-6">
+    <div class="max-w-4xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
+      
+      <button id="cart-btn" onclick="openCartDrawer()" class="flex items-center gap-2 bg-[#572A14] hover:bg-[#3D1E0B] text-white px-3.5 sm:px-5 py-2.5 rounded-2xl font-bold text-xs sm:text-sm shadow-md transition-all active:scale-95 shrink-0 cursor-pointer">
+        <span class="text-base sm:text-lg">🛒</span>
+        <span class="tracking-wide">Carrinho</span>
+        <span id="cart-badge" class="bg-[#E86328] text-white text-[11px] font-extrabold px-2 py-0.5 rounded-full">(0)</span>
+      </button>
+
+      <div class="relative flex-1 max-w-md">
+        <input 
+          id="search-input" 
+          type="text" 
+          placeholder="Quer pedir o quê?" 
+          oninput="handleSearch(this.value)"
+          onfocus="this.classList.add('ring-2', 'ring-orange-500')"
+          onblur="this.classList.remove('ring-2', 'ring-orange-500')"
+          class="w-full bg-[#FAF7F2] text-amber-950 placeholder-stone-400 text-xs sm:text-sm rounded-2xl pl-9 pr-8 py-2.5 border border-stone-300 focus:outline-none focus:bg-white transition-all duration-300"
+        />
+        <svg class="w-4 h-4 text-stone-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+        <button id="clear-search-btn" onclick="resetSearch()" class="hidden absolute right-3 top-2.5 text-stone-400 hover:text-stone-700">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <button onclick="openHistoryModal()" class="flex items-center gap-1.5 bg-stone-100 hover:bg-stone-200 text-stone-800 px-3 sm:px-4 py-2.5 rounded-2xl font-bold text-xs sm:text-sm border border-stone-200 transition-all active:scale-95 shrink-0 cursor-pointer">
+        <span class="text-sm sm:text-base">🕒</span>
+        <span class="hidden sm:inline">Histórico</span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: HORÁRIOS DE FUNCIONAMENTO COMPLETOS                                 -->
+  <!-- ========================================================================= -->
+  <div id="hours-modal" class="fixed inset-0 z-50 bg-black/65 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-stone-200 text-stone-800">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-stone-100 mb-4">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl">⏰</span>
+          <div>
+            <h3 class="text-lg font-bold text-amber-950 font-heading">Horários de Funcionamento</h3>
+            <p class="text-xs text-stone-500">Forno quente e entrega rápida em Sobradinho</p>
+          </div>
+        </div>
+        <button onclick="closeHoursModal()" class="text-stone-400 hover:text-stone-800 p-1.5 rounded-full hover:bg-stone-100 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <div id="hours-table" class="space-y-2 mb-4"></div>
+
+      <div class="p-3 bg-amber-50 rounded-2xl border border-amber-200/80 text-xs text-amber-900 flex items-center gap-2.5">
+        <span class="text-lg">🥖</span>
+        <span>Abertura todos os dias às <strong>18:00</strong>. Pão artesanal assado na hora!</span>
+      </div>
+
+      <button onclick="closeHoursModal()" class="mt-4 w-full bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold py-2.5 rounded-xl text-xs transition">
+        Entendi
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: LOGIN / CADASTRO DO CLIENTE (GMAIL, CEP & ENDEREÇO)               -->
+  <!-- ========================================================================= -->
+  <div id="customer-modal" class="fixed inset-0 z-50 bg-black/65 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-6 shadow-2xl border border-stone-200 text-stone-800">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-stone-100 mb-4">
+        <div class="flex items-center gap-2">
+          <div class="w-10 h-10 rounded-2xl bg-orange-100 text-orange-700 flex items-center justify-center text-xl">👤</div>
+          <div>
+            <h3 class="text-lg font-bold text-amber-950 font-heading">Perfil do Cliente</h3>
+            <p class="text-xs text-stone-500">Entre para entrega rápida e acompanhamento</p>
+          </div>
+        </div>
+        <button onclick="closeCustomerAuthModal()" class="text-stone-400 hover:text-stone-800 p-1.5 rounded-full hover:bg-stone-100 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Botão Rápido: Login com Google / Gmail -->
+      <div class="mb-5">
+        <button onclick="quickGoogleLogin()" class="w-full flex items-center justify-center gap-3 bg-white hover:bg-stone-50 text-stone-700 font-bold text-xs sm:text-sm py-2.5 px-4 rounded-2xl border border-stone-300 shadow-sm transition active:scale-98">
+          <svg class="w-4 h-4" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          <span>Entrar rapidamente com Gmail / Google</span>
+        </button>
+
+        <div class="relative flex py-3 items-center">
+          <div class="flex-grow border-t border-stone-200"></div>
+          <span class="flex-shrink mx-3 text-stone-400 text-[11px] uppercase font-bold tracking-wider">ou preencha seus dados</span>
+          <div class="flex-grow border-t border-stone-200"></div>
+        </div>
+      </div>
+
+      <!-- Formulário de Cadastro / Edição -->
+      <form id="customer-form" onsubmit="saveCustomerProfile(event)" class="space-y-3.5">
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-stone-700 mb-1">Nome Completo *</label>
+            <input id="cust-name" type="text" required placeholder="Ex: Carlos Silva" class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-orange-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-stone-700 mb-1">Gmail / E-mail *</label>
+            <input id="cust-email" type="email" required placeholder="seu.email@gmail.com" class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-orange-500 focus:outline-none">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-stone-700 mb-1">WhatsApp / Telefone *</label>
+            <input id="cust-phone" type="text" required placeholder="(61) 99999-9999" class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-orange-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-stone-700 mb-1">
+              CEP * <span id="cep-status" class="text-[10px] text-orange-600 font-normal"></span>
+            </label>
+            <div class="relative">
+              <input id="cust-cep" type="text" required placeholder="00000-000" maxlength="9" oninput="handleCepInput(this.value)" class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-orange-500 focus:outline-none">
+              <span id="cep-spinner" class="hidden absolute right-2.5 top-2 text-xs">⏳</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Endereço de Entrega Completo -->
+        <div class="pt-2 border-t border-stone-100">
+          <p class="text-xs font-extrabold text-amber-950 mb-2 flex items-center gap-1">
+            <span>📍 Endereço de Entrega Completo</span>
+          </p>
+
+          <div class="grid grid-cols-3 gap-2 mb-2">
+            <div class="col-span-2">
+              <label class="block text-[11px] font-semibold text-stone-600 mb-1">Rua / Logradouro / Quadra *</label>
+              <input id="cust-street" type="text" required placeholder="Ex: Quadra 13 Comércio Local" class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-orange-500 focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-[11px] font-semibold text-stone-600 mb-1">Número *</label>
+              <input id="cust-number" type="text" required placeholder="Ex: Lote 10" class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-orange-500 focus:outline-none">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-2">
+            <div>
+              <label class="block text-[11px] font-semibold text-stone-600 mb-1">Complemento / Apto</label>
+              <input id="cust-complement" type="text" placeholder="Ex: Bloco B, Ap 204" class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-orange-500 focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-[11px] font-semibold text-stone-600 mb-1">Bairro *</label>
+              <input id="cust-neighborhood" type="text" required placeholder="Sobradinho" class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-orange-500 focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-[11px] font-semibold text-stone-600 mb-1">Cidade / UF *</label>
+              <input id="cust-city" type="text" required placeholder="Brasília - DF" class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-orange-500 focus:outline-none">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-semibold text-stone-600 mb-1">Ponto de Referência</label>
+            <input id="cust-reference" type="text" placeholder="Ex: Próximo à padaria central ou em frente à praça" class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-orange-500 focus:outline-none">
+          </div>
+        </div>
+
+        <div class="pt-3 flex gap-2">
+          <button type="submit" class="flex-1 bg-gradient-to-r from-orange-600 to-amber-700 hover:from-orange-500 hover:to-amber-600 text-white font-bold py-2.5 rounded-2xl text-xs sm:text-sm shadow-md transition active:scale-98">
+            Salvar e Continuar 💾
+          </button>
+          <button id="cust-logout-btn" type="button" onclick="logoutCustomer()" class="hidden bg-stone-100 hover:bg-rose-50 hover:text-rose-600 text-stone-600 font-bold px-3 py-2.5 rounded-2xl text-xs transition">
+            Sair da Conta
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: LOGIN DO ADMINISTRADOR                                             -->
+  <!-- ========================================================================= -->
+  <div id="admin-login-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-stone-200 text-stone-800 text-center">
+      <div class="w-14 h-14 rounded-2xl bg-amber-950 text-amber-300 mx-auto flex items-center justify-center text-2xl mb-3 shadow-lg">
+        🔐
+      </div>
+      <h3 class="text-xl font-bold text-amber-950 font-heading">Acesso do Lojista</h3>
+      <p class="text-xs text-stone-500 mt-1 mb-4">Painel restrito para alterações de cardápio e preços</p>
+
+      <form onsubmit="handleAdminLogin(event)" class="space-y-3 text-left">
+        <div>
+          <label class="block text-xs font-bold text-stone-700 mb-1">E-mail Administrativo</label>
+          <input id="admin-email" type="email" placeholder="Digite seu e-mail administrativo" autocomplete="off" required class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-stone-700 mb-1">Senha de Acesso</label>
+          <input id="admin-password" type="password" placeholder="Digite sua senha de acesso" autocomplete="new-password" required class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none">
+        </div>
+
+        <button type="submit" class="w-full bg-amber-900 hover:bg-amber-800 text-amber-100 font-bold py-2.5 rounded-2xl text-xs shadow-md transition active:scale-98">
+          Entrar no Painel 🔑
+        </button>
+      </form>
+
+      <button onclick="closeAdminLoginModal()" class="mt-4 text-xs font-bold text-stone-400 hover:text-stone-700">
+        Cancelar e Voltar
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: PAINEL DE GESTÃO DO ADMINISTRADOR                                  -->
+  <!-- ========================================================================= -->
+  <div id="admin-panel-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] overflow-hidden flex flex-col shadow-2xl border border-stone-200">
+      
+      <div class="p-5 bg-[#381B0E] text-white flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">⚙️</span>
+          <div>
+            <h3 class="text-lg font-bold font-heading text-amber-100">Painel de Gestão - Bagueteria Artesanal</h3>
+            <p class="text-xs text-amber-300/80">Gerencie produtos, horários automáticos e loja</p>
+          </div>
+        </div>
+        <button onclick="closeAdminModal()" class="text-amber-200 hover:text-white p-2 rounded-full hover:bg-white/10 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="flex border-b border-stone-200 bg-stone-50 px-5 pt-3 gap-2">
+        <button onclick="switchAdminTab('products')" id="tab-btn-products" class="px-4 py-2 text-xs font-bold rounded-t-xl bg-white border-t-2 border-orange-600 text-amber-950 shadow-sm">
+          🍔 Cardápio & Produtos (<span id="admin-prod-count">0</span>)
+        </button>
+        <button onclick="switchAdminTab('settings')" id="tab-btn-settings" class="px-4 py-2 text-xs font-bold rounded-t-xl text-stone-500 hover:text-stone-800">
+          🏪 Configurações & Horários
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-5 bg-[#FAF7F2]">
+        
+        <!-- ABA 1: PRODUTOS -->
+        <div id="admin-tab-products" class="space-y-4">
+          <div class="flex items-center justify-between">
+            <h4 class="text-sm font-bold text-amber-950">Lista de Produtos Cadastrados</h4>
+            <button onclick="openProductEditModal(null)" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow transition flex items-center gap-1.5">
+              <span>➕ Novo Produto</span>
+            </button>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-stone-200 overflow-hidden shadow-sm">
+            <div id="admin-product-list" class="divide-y divide-stone-100"></div>
+          </div>
+        </div>
+
+        <!-- ABA 2: CONFIGURAÇÕES DA LOJA & HORÁRIOS -->
+        <div id="admin-tab-settings" class="hidden space-y-4 max-w-xl mx-auto">
+          <div class="bg-white rounded-2xl p-5 border border-stone-200 shadow-sm space-y-4">
+            <h4 class="text-sm font-bold text-amber-950 border-b pb-2">Controle de Horários & Funcionamento</h4>
+
+            <div>
+              <label class="block text-xs font-bold text-stone-700 mb-1">Modo de Funcionamento</label>
+              <select id="cfg-status-mode" class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs font-bold">
+                <option value="auto">⏱️ Automático (Seguir Grade Semanal Oficial)</option>
+                <option value="force_open">🟢 Forçar Aberto (Sobrescrever Horário)</option>
+                <option value="force_closed">🔴 Forçar Fechado (Manutenção / Feriado)</option>
+              </select>
+              <p class="text-[11px] text-stone-500 mt-1">
+                No modo <strong>Automático</strong>, a loja abre e fecha pontualmente de acordo com a programação oficial cadastrada.
+              </p>
+            </div>
+
+            <!-- Grade Oficial Exibida no Admin -->
+            <div class="p-3 bg-amber-50/70 rounded-xl border border-amber-200 text-xs text-amber-950 space-y-1">
+              <p class="font-bold mb-1">📅 Grade Oficial de Horários Programada:</p>
+              <div class="grid grid-cols-2 gap-1 text-[11px]">
+                <span>• Domingo: 18:00 - 23:00</span>
+                <span>• Segunda: 18:00 - 23:00</span>
+                <span>• Terça: 18:00 - 23:30</span>
+                <span>• Quarta: 18:00 - 23:30</span>
+                <span>• Quinta: 18:00 - 23:30</span>
+                <span>• Sexta: 18:00 - 23:30</span>
+                <span class="col-span-2">• Sábado: 18:00 - 23:00</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-stone-700 mb-1">Telefone WhatsApp (com DDD)</label>
+              <input id="cfg-phone" type="text" class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-stone-700 mb-1">Endereço Completo da Loja</label>
+              <input id="cfg-address" type="text" class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-stone-700 mb-1">Cupom Promocional Ativo</label>
+              <input id="cfg-coupon" type="text" class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs uppercase font-mono font-bold">
+            </div>
+
+            <div class="pt-2 flex gap-2">
+              <button onclick="saveStoreSettings()" class="flex-1 bg-amber-900 hover:bg-amber-800 text-amber-100 font-bold py-2.5 rounded-xl text-xs transition">
+                Salvar Configurações 💾
+              </button>
+              <button onclick="resetDefaults()" class="bg-stone-100 hover:bg-rose-50 hover:text-rose-600 text-stone-600 font-bold px-3 py-2.5 rounded-xl text-xs transition" title="Restaura os produtos padrão de fábrica">
+                Restaurar Padrão ↺
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="p-4 bg-stone-100 border-t border-stone-200 flex justify-end">
+        <button onclick="closeAdminModal()" class="bg-stone-200 hover:bg-stone-300 text-stone-800 font-bold px-5 py-2 rounded-xl text-xs transition">
+          Fechar Painel
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: ADICIONAR / EDITAR PRODUTO (ADMIN)                                -->
+  <!-- ========================================================================= -->
+  <div id="product-edit-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-stone-200 text-stone-800">
+      <div class="flex items-center justify-between pb-3 border-b border-stone-100 mb-4">
+        <h3 id="prod-modal-title" class="text-base font-bold text-amber-950 font-heading">Editar Produto</h3>
+        <button onclick="closeProductEditModal()" class="text-stone-400 hover:text-stone-800">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <form onsubmit="handleSaveProduct(event)" class="space-y-3">
+        <input type="hidden" id="prod-edit-id">
+
+        <div>
+          <label class="block text-xs font-bold text-stone-700 mb-1">Nome do Produto *</label>
+          <input id="prod-name" type="text" required placeholder="Ex: Baguete de Costela - 22 cm" class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-orange-500 focus:outline-none">
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-xs font-bold text-stone-700 mb-1">Categoria *</label>
+            <select id="prod-cat" required class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-orange-500 focus:outline-none">
+              <option value="baguetes">🥖 Baguetes</option>
+              <option value="hamburguer">🍔 Hambúrguer</option>
+              <option value="refrigerantes">🥤 Refrigerantes</option>
+              <option value="cervejas">🍺 Cervejas</option>
+              <option value="sucos">🧃 Sucos</option>
+              <option value="combos">🍟 Combos</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-stone-700 mb-1">Preço (R$) *</label>
+            <input id="prod-price" type="number" step="0.50" min="0" required placeholder="22.00" class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs font-bold text-orange-700 focus:ring-2 focus:ring-orange-500 focus:outline-none">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-stone-700 mb-1">Descrição do Produto</label>
+          <textarea id="prod-desc" rows="2" placeholder="Descreva os ingredientes crocantes e artesanais..." class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-orange-500 focus:outline-none"></textarea>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-xs font-bold text-stone-700 mb-1">URL da Imagem</label>
+            <input id="prod-img" type="url" placeholder="https://..." class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs focus:ring-2 focus:ring-orange-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-stone-700 mb-1">Selo / Badge (opcional)</label>
+            <input id="prod-badge" type="text" placeholder="Ex: MAIS PEDIDO, NOVO" class="w-full bg-[#FAF7F2] border border-stone-300 rounded-xl px-3 py-2 text-xs uppercase focus:ring-2 focus:ring-orange-500 focus:outline-none">
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 pt-1">
+          <input id="prod-avail" type="checkbox" checked class="w-4 h-4 text-orange-600 rounded">
+          <label for="prod-avail" class="text-xs font-bold text-stone-700">Produto Ativo e Disponível para Venda</label>
+        </div>
+
+        <div class="pt-3 flex gap-2">
+          <button type="submit" class="flex-1 bg-amber-900 hover:bg-amber-800 text-amber-100 font-bold py-2.5 rounded-xl text-xs transition">
+            Salvar Produto 💾
+          </button>
+          <button type="button" onclick="closeProductEditModal()" class="bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold px-4 py-2.5 rounded-xl text-xs transition">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: REDIRECIONAMENTO GPS & ROTAS                                       -->
+  <!-- ========================================================================= -->
+  <div id="gps-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-stone-200 text-center transform transition-all scale-95 opacity-0 duration-300" id="gps-modal-card">
+      <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-900 mx-auto flex items-center justify-center text-3xl mb-3 shadow-inner">
+        📍
+      </div>
+      <h3 class="text-xl font-bold text-amber-950 font-heading">Como deseja chegar?</h3>
+      <p id="gps-modal-address" class="text-xs sm:text-sm text-stone-500 mt-1 mb-5">
+        Quadra 13 Comércio Local 10, 13 - Sobradinho (Brasília, DF)
+      </p>
+
+      <div class="grid grid-cols-1 gap-3">
+        <a href="https://maps.google.com/?q=Quadra+13+Comercio+Local+10+13+Sobradinho+DF" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 rounded-2xl border border-stone-200 hover:border-blue-500 hover:bg-blue-50/50 transition font-bold text-sm text-stone-800 group">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🗺️</span>
+            <div class="text-left">
+              <p class="text-stone-900 leading-tight">Google Maps</p>
+              <p class="text-[11px] text-stone-500 font-normal">Navegação com trânsito em tempo real</p>
+            </div>
+          </div>
+          <span class="text-blue-600 text-xs group-hover:translate-x-1 transition font-semibold">Abrir →</span>
+        </a>
+
+        <a href="https://waze.com/ul?q=Quadra%2013%20Comercio%20Local%2010%20Sobradinho" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 rounded-2xl border border-stone-200 hover:border-cyan-500 hover:bg-cyan-50/50 transition font-bold text-sm text-stone-800 group">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🚗</span>
+            <div class="text-left">
+              <p class="text-stone-900 leading-tight">Waze</p>
+              <p class="text-[11px] text-stone-500 font-normal">Melhores rotas e alertas de radares</p>
+            </div>
+          </div>
+          <span class="text-cyan-600 text-xs group-hover:translate-x-1 transition font-semibold">Abrir →</span>
+        </a>
+
+        <button onclick="copyAddressText()" class="flex items-center justify-center gap-2 p-3 rounded-2xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-bold transition">
+          <span id="copy-addr-icon">📋</span>
+          <span id="copy-addr-text">Copiar endereço completo</span>
+        </button>
+      </div>
+
+      <button onclick="closeGpsModal()" class="mt-5 w-full py-2.5 text-stone-500 hover:text-stone-800 text-xs font-bold transition">
+        Fechar
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- DRAWER: CARRINHO DE COMPRAS & CHECKOUT WHATSAPP                          -->
+  <!-- ========================================================================= -->
+  <div id="cart-drawer-overlay" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden transition-opacity opacity-0" onclick="closeCartDrawer()"></div>
+
+  <div id="cart-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-white z-50 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="p-5 border-b border-stone-200 flex items-center justify-between bg-[#FAF7F2]">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">🛒</span>
+        <h3 class="text-lg font-bold text-amber-950 font-heading">Seu Pedido</h3>
+      </div>
+      <button onclick="closeCartDrawer()" class="text-stone-400 hover:text-stone-800 p-2 rounded-full hover:bg-stone-200 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="cart-items-container" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
+
+    <!-- Aviso no Carrinho se a loja estiver fechada -->
+    <div id="cart-closed-notice" class="hidden mx-5 mb-2 p-3 bg-rose-50 border border-rose-200 rounded-2xl text-xs text-rose-900">
+      <div class="flex items-start gap-2">
+        <span class="text-base">🌙</span>
+        <div>
+          <p class="font-bold">Loja fechada no momento</p>
+          <p class="text-[11px] text-rose-700">Seu pedido será enviado como <strong>pré-agendamento</strong> no WhatsApp para abertura às 18:00.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dados do Cliente no Carrinho -->
+    <div id="cart-customer-preview" class="px-5 py-3 bg-stone-50 border-t border-stone-200 text-xs"></div>
+
+    <!-- Cupom no Carrinho -->
+    <div class="p-4 bg-amber-50/60 border-t border-stone-200">
+      <div class="flex gap-2">
+        <input id="cart-coupon-input" type="text" placeholder="Cupom de desconto" value="PRIMEIRABAGUETE" class="flex-1 bg-white border border-stone-300 rounded-xl px-3 py-2 text-xs uppercase font-mono font-bold focus:outline-none focus:ring-1 focus:ring-orange-500">
+        <button onclick="applyCartCoupon()" class="bg-amber-900 text-amber-100 hover:bg-amber-800 px-3 py-2 rounded-xl text-xs font-bold transition">Aplicar</button>
+      </div>
+      <p id="coupon-applied-msg" class="text-[11px] text-emerald-700 font-bold mt-1.5 flex items-center gap-1">
+        <span>✓ Cupom aplicado: Frete Grátis na 1ª compra!</span>
+      </p>
+    </div>
+
+    <!-- Total e Botão de Finalizar -->
+    <div class="p-5 border-t border-stone-200 bg-white space-y-3">
+      <div class="space-y-1.5 text-xs text-stone-600">
+        <div class="flex justify-between">
+          <span>Subtotal</span>
+          <span id="cart-subtotal" class="font-bold text-stone-900">R$ 0,00</span>
+        </div>
+        <div class="flex justify-between text-emerald-600">
+          <span>Frete (Cupom 1ª Compra)</span>
+          <span class="font-bold">GRÁTIS</span>
+        </div>
+        <div class="flex justify-between text-base font-extrabold text-amber-950 pt-2 border-t border-stone-100">
+          <span>Total</span>
+          <span id="cart-total" class="text-xl font-heading text-orange-600">R$ 0,00</span>
+        </div>
+      </div>
+
+      <button onclick="checkoutViaWhatsApp()" class="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white py-3.5 rounded-2xl font-bold text-sm shadow-lg shadow-emerald-950/20 flex items-center justify-center gap-2 transition active:scale-95 cursor-pointer">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        <span id="checkout-btn-text">Enviar Pedido via WhatsApp</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: HISTÓRICO DE PEDIDOS                                               -->
+  <!-- ========================================================================= -->
+  <div id="history-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-stone-200 text-stone-800">
+      <div class="flex items-center justify-between mb-4 pb-2 border-b border-stone-100">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">🕒</span>
+          <h3 class="text-lg font-bold text-amber-950 font-heading">Histórico de Pedidos</h3>
+        </div>
+        <button onclick="closeHistoryModal()" class="text-stone-400 hover:text-stone-800">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="space-y-3 max-h-72 overflow-y-auto pr-1">
+        <div class="p-3.5 rounded-2xl bg-amber-50/50 border border-amber-900/10">
+          <div class="flex justify-between items-center text-xs font-bold text-stone-500">
+            <span>Pedido #1042 • Ontem</span>
+            <span class="text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full font-bold">Entregue</span>
+          </div>
+          <p class="text-xs font-semibold text-amber-950 mt-1.5">1x Baguete de Costela - 22 cm, 1x Coca-Cola Lata</p>
+          <div class="flex justify-between items-center mt-2.5 pt-2 border-t border-amber-900/10 text-xs">
+            <span class="font-extrabold text-stone-900">Total: R$ 28,00</span>
+            <button onclick="repeatOrder(['Baguete de Costela - 22 cm', 'Coca-Cola Lata 350ml'])" class="text-orange-600 font-bold hover:underline">Repetir Pedido ↺</button>
+          </div>
+        </div>
+
+        <div class="p-3.5 rounded-2xl bg-stone-50 border border-stone-200">
+          <div class="flex justify-between items-center text-xs font-bold text-stone-500">
+            <span>Pedido #0988 • 22/08/2026</span>
+            <span class="text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full font-bold">Entregue</span>
+          </div>
+          <p class="text-xs font-semibold text-amber-950 mt-1.5">2x Baguete de Picanha - 22 cm</p>
+          <div class="flex justify-between items-center mt-2.5 pt-2 border-t border-stone-200 text-xs">
+            <span class="font-extrabold text-stone-900">Total: R$ 64,00</span>
+            <button onclick="repeatOrder(['Baguete de Picanha - 22 cm'])" class="text-orange-600 font-bold hover:underline">Repetir Pedido ↺</button>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="closeHistoryModal()" class="mt-5 w-full bg-stone-100 hover:bg-stone-200 text-stone-700 py-2.5 rounded-xl text-xs font-bold transition">
+        Fechar
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT: NOTIFICAÇÃO ANIMADA, CONFETES & AUTOMAÇÃO                     -->
+  <!-- ========================================================================= -->
+  <script>
+    // Grade de Horários
+    const STORE_SCHEDULE = {
+      0: { name: 'Domingo', open: '18:00', close: '23:00', openMin: 18 * 60, closeMin: 23 * 60 },
+      1: { name: 'Segunda-feira', open: '18:00', close: '23:00', openMin: 18 * 60, closeMin: 23 * 60 },
+      2: { name: 'Terça-feira', open: '18:00', close: '23:30', openMin: 18 * 60, closeMin: 23 * 60 + 30 },
+      3: { name: 'Quarta-feira', open: '18:00', close: '23:30', openMin: 18 * 60, closeMin: 23 * 60 + 30 },
+      4: { name: 'Quinta-feira', open: '18:00', close: '23:30', openMin: 18 * 60, closeMin: 23 * 60 + 30 },
+      5: { name: 'Sexta-feira', open: '18:00', close: '23:30', openMin: 18 * 60, closeMin: 23 * 60 + 30 },
+      6: { name: 'Sábado', open: '18:00', close: '23:00', openMin: 18 * 60, closeMin: 23 * 60 }
+    };
+
+    const DEFAULT_PRODUCTS = [
+      {
+        id: '1',
+        name: 'Baguete de Costela - 22 cm',
+        category: 'baguetes',
+        price: 22.00,
+        desc: 'Pão artesanal crocante, recheado com costela bovina desfiada e cozida lentamente até ficar macia, queijo derretido e molho especial.',
+        image: 'https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=400&q=80',
+        badge: 'MAIS PEDIDO',
+        available: true
+      },
+      {
+        id: '2',
+        name: 'Baguete de Pernil Suíno - 22 cm',
+        category: 'baguetes',
+        price: 15.00,
+        desc: 'Pão artesanal crocante recheado com suculenta carne suína desfiada e temperada no ponto, vinagrete caseiro e queijo derretido.',
+        image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=400&q=80',
+        badge: '',
+        available: true
+      },
+      {
+        id: '3',
+        name: 'Baguete de Frango - 22 cm',
+        category: 'baguetes',
+        price: 15.00,
+        desc: 'Pão artesanal crocante recheado com peito de frango desfiado com ervas finas, requeijão cremoso e queijo tostado.',
+        image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80',
+        badge: '',
+        available: true
+      },
+      {
+        id: '4',
+        name: 'Baguete de Picanha - 22 cm',
+        category: 'baguetes',
+        price: 32.00,
+        desc: 'Tiras nobres de picanha grelhada na manteiga de alho, cebola caramelizada, queijo provolone e chimichurri artesanal.',
+        image: 'https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&w=400&q=80',
+        badge: 'PREMIUM',
+        available: true
+      },
+      {
+        id: '5',
+        name: 'Baguete de Carne de Sol - 22 cm',
+        category: 'baguetes',
+        price: 22.00,
+        desc: 'Carne de sol artesanal desfiada na manteiga de garrafa, queijo coalho maçaricado e cebola roxa salteada.',
+        image: 'https://images.unsplash.com/photo-1549611016-3a70d82b5040?auto=format&fit=crop&w=400&q=80',
+        badge: '',
+        available: true
+      },
+      {
+        id: '6',
+        name: 'Baguete de Linguiça Perdigão - 22 cm',
+        category: 'baguetes',
+        price: 22.00,
+        desc: 'Pão artesanal crocante com linguiça toscana premium grelhada, vinagrete caseiro fresco e cobertura de queijo derretido.',
+        image: 'https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=400&q=80',
+        badge: '',
+        available: true
+      },
+      {
+        id: '7',
+        name: 'Burger Artesanal Duplo Smash',
+        category: 'hamburguer',
+        price: 26.00,
+        desc: '2 blends bovinos de 90g prensados na chapa, queijo cheddar inglês derretido, tiras de bacon crocante e molho no pão brioche.',
+        image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80',
+        badge: 'ARTESANAL',
+        available: true
+      },
+      {
+        id: '8',
+        name: 'Coca-Cola Lata 350ml',
+        category: 'refrigerantes',
+        price: 6.00,
+        desc: 'Lata trincando de gelada (Original ou Zero Açúcar) para acompanhar sua baguete favorita.',
+        image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=400&q=80',
+        badge: '',
+        available: true
+      },
+      {
+        id: '9',
+        name: 'Cerveja Artesanal IPA Puro Malte 500ml',
+        category: 'cervejas',
+        price: 16.00,
+        desc: 'Notas aromáticas de lúpulos nobres, amargor equilibrado e finalização refrescante.',
+        image: 'https://images.unsplash.com/photo-1608270195537-4d9229e61c56?auto=format&fit=crop&w=400&q=80',
+        badge: 'ESPECIAL',
+        available: true
+      },
+      {
+        id: '10',
+        name: 'Suco Natural de Laranja 400ml',
+        category: 'sucos',
+        price: 9.00,
+        desc: '100% natural, espremido na hora, sem conservantes ou adição de açúcar.',
+        image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=400&q=80',
+        badge: 'NATURAL',
+        available: true
+      },
+      {
+        id: '11',
+        name: 'Batata Rústica com Alecrim & Páprica',
+        category: 'combos',
+        price: 18.00,
+        desc: 'Porção crocante por fora e macia por dentro, aromatizada com alecrim fresco e páprica defumada.',
+        image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=400&q=80',
+        badge: 'CROCANTE',
+        available: true
+      }
+    ];
+
+    const DEFAULT_CONFIG = {
+      statusMode: 'auto',
+      storePhone: '(61) 99647-9133',
+      storePhoneRaw: '5561996479133',
+      storeAddress: 'Quadra 13 Comércio Local 10, 13 - Sobradinho (Brasília, DF)',
+      activeCoupon: 'PRIMEIRABAGUETE'
+    };
+
+    let products = JSON.parse(localStorage.getItem('bagueteria_products')) || DEFAULT_PRODUCTS;
+    let storeConfig = JSON.parse(localStorage.getItem('bagueteria_config')) || DEFAULT_CONFIG;
+    let customer = JSON.parse(localStorage.getItem('bagueteria_customer')) || null;
+    let isAdmin = localStorage.getItem('bagueteria_is_admin') === 'true';
+    let currentCategory = 'baguetes';
+    let cart = [];
+
+    // =========================================================================
+    // INICIALIZAÇÃO & DISPARO DA NOTIFICAÇÃO ANIMADA
+    // =========================================================================
+    window.addEventListener('DOMContentLoaded', () => {
+      checkStoreHoursAutomation();
+      syncStoreConfigUI();
+      syncCustomerUI();
+      syncAdminUI();
+      renderProductGrid();
+      updateCartUI();
+
+      // Dispara a notificação de entrada de forma animada e divertida após 1.1 segundos
+      setTimeout(showWelcomeNotification, 1100);
+
+      // Loop de verificação de horários a cada 30 segundos
+      setInterval(checkStoreHoursAutomation, 30000);
+    });
+
+    // =========================================================================
+    // NOTIFICAÇÃO DE ENTRADA & EFEITO DE CONFETES
+    // =========================================================================
+    function showWelcomeNotification() {
+      const overlay = document.getElementById('welcome-modal-overlay');
+      const card = document.getElementById('welcome-card');
+      
+      overlay.classList.remove('hidden');
+      card.classList.add('animate-pop-welcome');
+
+      // Dispara a chuva de confetes comemorativos
+      triggerConfetti();
+    }
+
+    function closeWelcomeModal() {
+      const overlay = document.getElementById('welcome-modal-overlay');
+      const card = document.getElementById('welcome-card');
+      card.style.transform = 'scale(0.8) translateY(40px)';
+      card.style.opacity = '0';
+      card.style.transition = 'all 0.3s ease-in';
+      setTimeout(() => overlay.classList.add('hidden'), 280);
+    }
+
+    function claimWelcomeCoupon() {
+      navigator.clipboard.writeText(storeConfig.activeCoupon).then(() => {
+        const btnText = document.getElementById('welcome-btn-copy-text');
+        btnText.textContent = "✓ Copiado!";
+        triggerConfetti();
+        setTimeout(() => {
+          btnText.textContent = "Copiar Cupom";
+        }, 2500);
+      });
+    }
+
+    function claimWelcomeCouponAndGo() {
+      claimWelcomeCoupon();
+      setTimeout(() => {
+        closeWelcomeModal();
+        scrollToMenu();
+      }, 400);
+    }
+
+    // Gerador de Confetes em Canvas
+    function triggerConfetti() {
+      const canvas = document.getElementById('confetti-canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const pieces = [];
+      const colors = ['#E86328', '#F59E0B', '#10B981', '#EF4444', '#8B5CF6', '#FBBF24', '#572A14'];
+
+      for (let i = 0; i < 90; i++) {
+        pieces.push({
+          x: window.innerWidth / 2,
+          y: window.innerHeight / 2 + 50,
+          vx: (Math.random() - 0.5) * 16,
+          vy: (Math.random() - 0.8) * 18,
+          size: Math.random() * 8 + 5,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          rotSpeed: (Math.random() - 0.5) * 12,
+          gravity: 0.35,
+          opacity: 1
+        });
+      }
+
+      let animationFrame;
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let alive = false;
+
+        pieces.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += p.gravity;
+          p.rotation += p.rotSpeed;
+          p.opacity -= 0.009;
+
+          if (p.opacity > 0) {
+            alive = true;
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate((p.rotation * Math.PI) / 180);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = Math.max(0, p.opacity);
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+            ctx.restore();
+          }
+        });
+
+        if (alive) {
+          animationFrame = requestAnimationFrame(animate);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          cancelAnimationFrame(animationFrame);
+        }
+      }
+
+      animate();
+    }
+
+    // =========================================================================
+    // CÁLCULO E AUTOMAÇÃO DE HORÁRIOS DE FUNCIONAMENTO
+    // =========================================================================
+    function getAutomatedStoreStatus() {
+      if (storeConfig.statusMode === 'force_open') {
+        return {
+          isOpen: true,
+          label: 'Aberto agora (Modo Forçado)',
+          sub: 'Aberto manualmente pelo administrador',
+          isManual: true
+        };
+      }
+      if (storeConfig.statusMode === 'force_closed') {
+        return {
+          isOpen: false,
+          label: 'Fechado no momento (Manual)',
+          sub: 'Fechado manualmente pelo administrador',
+          isManual: true
+        };
+      }
+
+      const now = new Date();
+      const day = now.getDay();
+      const currentMinutes = now.getHours() * 60 + now.getMinutes();
+      const todaySched = STORE_SCHEDULE[day];
+
+      const isOpen = currentMinutes >= todaySched.openMin && currentMinutes < todaySched.closeMin;
+
+      if (isOpen) {
+        return {
+          isOpen: true,
+          label: 'Aberto agora',
+          sub: `Fecha hoje às ${todaySched.close}`,
+          closingTime: todaySched.close,
+          dayName: todaySched.name
+        };
+      } else {
+        if (currentMinutes < todaySched.openMin) {
+          return {
+            isOpen: false,
+            label: 'Fechado no momento',
+            sub: `Abre hoje às ${todaySched.open}`,
+            nextOpen: `Hoje às ${todaySched.open}`,
+            dayName: todaySched.name
+          };
+        } else {
+          const nextDayIndex = (day + 1) % 7;
+          const nextSched = STORE_SCHEDULE[nextDayIndex];
+          return {
+            isOpen: false,
+            label: 'Fechado no momento',
+            sub: `Abre amanhã (${nextSched.name}) às ${nextSched.open}`,
+            nextOpen: `Amanhã às ${nextSched.open}`,
+            dayName: todaySched.name
+          };
+        }
+      }
+    }
+
+    function checkStoreHoursAutomation() {
+      const status = getAutomatedStoreStatus();
+      const badge = document.getElementById('store-status-badge');
+      const dot = document.getElementById('store-status-dot');
+      const text = document.getElementById('store-status-text');
+      const closedBanner = document.getElementById('closed-warning-banner');
+      const closedDetail = document.getElementById('closed-warning-detail');
+      const cartNotice = document.getElementById('cart-closed-notice');
+      const checkoutBtnText = document.getElementById('checkout-btn-text');
+
+      if (status.isOpen) {
+        badge.className = "inline-flex items-center gap-1.5 bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 font-semibold px-3 py-1 rounded-full shadow-inner backdrop-blur-sm transition cursor-pointer hover:bg-emerald-900/80";
+        dot.className = "w-2.5 h-2.5 rounded-full bg-emerald-400 animate-dot-pulse inline-block";
+        text.textContent = `${status.label} • ${status.sub}`;
+        closedBanner.classList.add('hidden');
+        if (cartNotice) cartNotice.classList.add('hidden');
+        if (checkoutBtnText) checkoutBtnText.textContent = "Enviar Pedido via WhatsApp";
+      } else {
+        badge.className = "inline-flex items-center gap-1.5 bg-rose-950/70 border border-rose-500/40 text-rose-300 font-semibold px-3 py-1 rounded-full shadow-inner backdrop-blur-sm transition cursor-pointer hover:bg-rose-900/80";
+        dot.className = "w-2.5 h-2.5 rounded-full bg-rose-500 inline-block";
+        text.textContent = `${status.label} • ${status.sub}`;
+        closedBanner.classList.remove('hidden');
+        closedDetail.textContent = `Nosso forno acende ${status.nextOpen || 'às 18:00'}!`;
+        if (cartNotice) cartNotice.classList.remove('hidden');
+        if (checkoutBtnText) checkoutBtnText.textContent = "Enviar Pedido Pré-Agendado via WhatsApp";
+      }
+    }
+
+    function openHoursModal() {
+      const modal = document.getElementById('hours-modal');
+      const table = document.getElementById('hours-table');
+      const todayDay = new Date().getDay();
+
+      table.innerHTML = Object.entries(STORE_SCHEDULE).map(([dayIdx, sched]) => {
+        const isToday = parseInt(dayIdx) === todayDay;
+        return `
+          <div class="flex items-center justify-between p-2.5 rounded-xl text-xs ${isToday ? 'bg-amber-100 border border-amber-300 font-extrabold text-amber-950' : 'bg-stone-50 border border-stone-100 text-stone-700'}">
+            <div class="flex items-center gap-2">
+              <span>${isToday ? '⭐' : '•'}</span>
+              <span>${sched.name}</span>
+              ${isToday ? '<span class="bg-amber-800 text-amber-100 text-[10px] px-1.5 py-0.5 rounded uppercase font-bold">Hoje</span>' : ''}
+            </div>
+            <div class="font-mono ${isToday ? 'text-orange-800' : 'text-stone-600'}">
+              ${sched.open} às ${sched.close}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeHoursModal() {
+      document.getElementById('hours-modal').classList.add('hidden');
+    }
+
+    // =========================================================================
+    // GESTÃO DE PRODUTOS & VITRINE
+    // =========================================================================
+    function renderProductGrid(filterTerm = '') {
+      const grid = document.getElementById('product-grid');
+      grid.innerHTML = '';
+
+      const term = filterTerm.trim().toLowerCase();
+      let visible = 0;
+
+      products.forEach((p, idx) => {
+        const matchesCategory = (currentCategory === 'combos' || p.category === currentCategory);
+        const matchesSearch = !term || (p.name.toLowerCase().includes(term) || p.desc.toLowerCase().includes(term));
+
+        if (matchesCategory && matchesSearch) {
+          visible++;
+          const card = document.createElement('div');
+          card.className = `product-card bg-white rounded-2xl p-4 sm:p-5 border ${!p.available ? 'opacity-60 border-dashed border-stone-300' : 'border-stone-200/80'} shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group relative`;
+          card.style.animation = `cardCascade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards ${idx * 40}ms`;
+
+          card.innerHTML = `
+            <div class="flex gap-4 sm:gap-5">
+              <div class="relative w-24 h-24 sm:w-32 sm:h-32 shrink-0 rounded-xl overflow-hidden bg-amber-50 shadow-inner">
+                <img src="${p.image || 'https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=400&q=80'}" alt="${p.name}" class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-500">
+                ${p.badge ? `<span class="absolute top-1 left-1 bg-orange-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded shadow-sm">${p.badge}</span>` : ''}
+                ${!p.available ? `<span class="absolute inset-0 bg-stone-900/60 flex items-center justify-center text-white text-xs font-bold">ESGOTADO</span>` : ''}
+              </div>
+
+              <div class="flex-1 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-start justify-between gap-1">
+                    <h3 class="text-base sm:text-lg font-bold text-amber-950 leading-snug group-hover:text-orange-700 transition">
+                      ${p.name}
+                    </h3>
+                    ${isAdmin ? `
+                      <button onclick="openProductEditModal('${p.id}')" title="Editar Produto" class="text-amber-800 hover:text-orange-600 p-1 rounded bg-amber-50 border border-amber-200">
+                        ✏️
+                      </button>
+                    ` : ''}
+                  </div>
+                  <p class="text-xs sm:text-sm text-stone-600 mt-1 line-clamp-3 leading-relaxed">
+                    ${p.desc}
+                  </p>
+                </div>
+
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-stone-100">
+                  <span class="text-lg sm:text-xl font-extrabold text-amber-950 font-heading">
+                    R$ ${p.price.toFixed(2).replace('.', ',')}
+                  </span>
+                  <button ${!p.available ? 'disabled' : ''} onclick="addToCart('${p.name}', ${p.price}, event)" class="add-to-cart-btn shimmer-container inline-flex items-center gap-1.5 ${!p.available ? 'bg-stone-300 text-stone-500 cursor-not-allowed' : 'bg-[#572A14] hover:bg-[#E86328] text-white active:scale-90 cursor-pointer'} font-bold text-xs sm:text-sm px-4 py-2 rounded-xl shadow-md transition-all duration-200">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
+                    </svg>
+                    <span>Adicionar</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+          grid.appendChild(card);
+        }
+      });
+
+      document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+    }
+
+    // =========================================================================
+    // AUTENTICAÇÃO DO CLIENTE & BUSCA DE CEP (VIACEP)
+    // =========================================================================
+    function openCustomerAuthModal() {
+      if (customer) {
+        document.getElementById('cust-name').value = customer.name || '';
+        document.getElementById('cust-email').value = customer.email || '';
+        document.getElementById('cust-phone').value = customer.phone || '';
+        document.getElementById('cust-cep').value = customer.cep || '';
+        document.getElementById('cust-street').value = customer.street || '';
+        document.getElementById('cust-number').value = customer.number || '';
+        document.getElementById('cust-complement').value = customer.complement || '';
+        document.getElementById('cust-neighborhood').value = customer.neighborhood || '';
+        document.getElementById('cust-city').value = customer.city || '';
+        document.getElementById('cust-reference').value = customer.reference || '';
+        document.getElementById('cust-logout-btn').classList.remove('hidden');
+      } else {
+        document.getElementById('customer-form').reset();
+        document.getElementById('cust-logout-btn').classList.add('hidden');
+      }
+      document.getElementById('customer-modal').classList.remove('hidden');
+    }
+
+    function closeCustomerAuthModal() {
+      document.getElementById('customer-modal').classList.add('hidden');
+    }
+
+    function quickGoogleLogin() {
+      const sampleNames = ['Carlos Silva', 'Mariana Oliveira', 'Lucas Santos', 'Fernanda Lima'];
+      const randomName = sampleNames[Math.floor(Math.random() * sampleNames.length)];
+      const gmail = randomName.toLowerCase().replace(' ', '.') + '@gmail.com';
+
+      document.getElementById('cust-name').value = randomName;
+      document.getElementById('cust-email').value = gmail;
+      document.getElementById('cust-phone').value = '(61) 99876-5432';
+      document.getElementById('cust-cep').value = '73010-100';
+      handleCepInput('73010-100');
+    }
+
+    function handleCepInput(value) {
+      const clean = value.replace(/\D/g, '');
+      const status = document.getElementById('cep-status');
+      const spinner = document.getElementById('cep-spinner');
+
+      if (clean.length === 8) {
+        status.textContent = 'Buscando endereço...';
+        spinner.classList.remove('hidden');
+
+        fetch(`https://viacep.com.br/ws/${clean}/json/`)
+          .then(res => res.json())
+          .then(data => {
+            spinner.classList.add('hidden');
+            if (!data.erro) {
+              document.getElementById('cust-street').value = data.logradouro || '';
+              document.getElementById('cust-neighborhood').value = data.bairro || '';
+              document.getElementById('cust-city').value = `${data.localidade} - ${data.uf}`;
+              status.textContent = '✓ Endereço localizado!';
+              status.className = 'text-[10px] text-emerald-600 font-bold';
+              document.getElementById('cust-number').focus();
+            } else {
+              status.textContent = 'CEP não encontrado. Digite manualmente.';
+              status.className = 'text-[10px] text-rose-500';
+            }
+          })
+          .catch(() => {
+            spinner.classList.add('hidden');
+            status.textContent = 'Preencha o endereço manualmente.';
+            status.className = 'text-[10px] text-stone-500';
+          });
+      } else {
+        status.textContent = '';
+      }
+    }
+
+    function saveCustomerProfile(e) {
+      e.preventDefault();
+      customer = {
+        name: document.getElementById('cust-name').value.trim(),
+        email: document.getElementById('cust-email').value.trim(),
+        phone: document.getElementById('cust-phone').value.trim(),
+        cep: document.getElementById('cust-cep').value.trim(),
+        street: document.getElementById('cust-street').value.trim(),
+        number: document.getElementById('cust-number').value.trim(),
+        complement: document.getElementById('cust-complement').value.trim(),
+        neighborhood: document.getElementById('cust-neighborhood').value.trim(),
+        city: document.getElementById('cust-city').value.trim(),
+        reference: document.getElementById('cust-reference').value.trim(),
+        isLoggedIn: true
+      };
+
+      localStorage.setItem('bagueteria_customer', JSON.stringify(customer));
+      syncCustomerUI();
+      closeCustomerAuthModal();
+      alert(`Olá ${customer.name}! Seus dados e endereço de entrega foram salvos com sucesso.`);
+    }
+
+    function logoutCustomer() {
+      customer = null;
+      localStorage.removeItem('bagueteria_customer');
+      syncCustomerUI();
+      closeCustomerAuthModal();
+    }
+
+    function syncCustomerUI() {
+      const headerInfo = document.getElementById('customer-header-info');
+      const btnLabel = document.getElementById('customer-btn-label');
+
+      if (customer && customer.name) {
+        const firstName = customer.name.split(' ')[0];
+        headerInfo.innerHTML = `
+          <span class="text-amber-300 font-bold">Olá, ${firstName}!</span>
+          <span class="text-stone-300 text-[11px] hidden sm:inline">• Entregar em: 📍 ${customer.street}, ${customer.number} (${customer.neighborhood})</span>
+        `;
+        btnLabel.textContent = `👤 ${firstName}`;
+      } else {
+        headerInfo.innerHTML = `<span class="text-stone-400">👋 Bem-vindo(a) à Bagueteria! Faça login para entrega rápida.</span>`;
+        btnLabel.textContent = `👤 Entrar / Cadastrar`;
+      }
+    }
+
+    // =========================================================================
+    // AUTENTICAÇÃO E PAINEL DO ADMINISTRADOR
+    // =========================================================================
+    function openAdminLoginModal() {
+      if (isAdmin) {
+        openAdminModal();
+      } else {
+        const emailInput = document.getElementById('admin-email');
+        const passInput = document.getElementById('admin-password');
+        if (emailInput) emailInput.value = '';
+        if (passInput) passInput.value = '';
+        document.getElementById('admin-login-modal').classList.remove('hidden');
+      }
+    }
+
+    function closeAdminLoginModal() {
+      const emailInput = document.getElementById('admin-email');
+      const passInput = document.getElementById('admin-password');
+      if (emailInput) emailInput.value = '';
+      if (passInput) passInput.value = '';
+      document.getElementById('admin-login-modal').classList.add('hidden');
+    }
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('admin-email').value.trim();
+      const pass = document.getElementById('admin-password').value.trim();
+
+      if (email === 'admin@bagueteria.com' && pass === 'admin123') {
+        isAdmin = true;
+        localStorage.setItem('bagueteria_is_admin', 'true');
+        closeAdminLoginModal();
+        syncAdminUI();
+        renderProductGrid();
+        openAdminModal();
+      } else {
+        alert('E-mail ou senha incorretos! Use admin@bagueteria.com / admin123');
+      }
+    }
+
+    function logoutAdmin() {
+      isAdmin = false;
+      localStorage.removeItem('bagueteria_is_admin');
+      syncAdminUI();
+      renderProductGrid();
+      closeAdminModal();
+    }
+
+    function syncAdminUI() {
+      const topBar = document.getElementById('admin-top-bar');
+      const addBtnWrapper = document.getElementById('admin-add-btn-wrapper');
+
+      if (isAdmin) {
+        topBar.classList.remove('hidden');
+        addBtnWrapper.classList.remove('hidden');
+      } else {
+        topBar.classList.add('hidden');
+        addBtnWrapper.classList.add('hidden');
+      }
+    }
+
+    function openAdminModal() {
+      renderAdminProductList();
+      populateSettingsForm();
+      document.getElementById('admin-panel-modal').classList.remove('hidden');
+    }
+
+    function closeAdminModal() {
+      document.getElementById('admin-panel-modal').classList.add('hidden');
+    }
+
+    function switchAdminTab(tab) {
+      const pTab = document.getElementById('admin-tab-products');
+      const sTab = document.getElementById('admin-tab-settings');
+      const pBtn = document.getElementById('tab-btn-products');
+      const sBtn = document.getElementById('tab-btn-settings');
+
+      if (tab === 'products') {
+        pTab.classList.remove('hidden');
+        sTab.classList.add('hidden');
+        pBtn.className = "px-4 py-2 text-xs font-bold rounded-t-xl bg-white border-t-2 border-orange-600 text-amber-950 shadow-sm";
+        sBtn.className = "px-4 py-2 text-xs font-bold rounded-t-xl text-stone-500 hover:text-stone-800";
+      } else {
+        sTab.classList.remove('hidden');
+        pTab.classList.add('hidden');
+        sBtn.className = "px-4 py-2 text-xs font-bold rounded-t-xl bg-white border-t-2 border-orange-600 text-amber-950 shadow-sm";
+        pBtn.className = "px-4 py-2 text-xs font-bold rounded-t-xl text-stone-500 hover:text-stone-800";
+      }
+    }
+
+    function renderAdminProductList() {
+      const list = document.getElementById('admin-product-list');
+      document.getElementById('admin-prod-count').textContent = products.length;
+      list.innerHTML = '';
+
+      products.forEach(p => {
+        const row = document.createElement('div');
+        row.className = "p-3.5 flex items-center justify-between gap-3 hover:bg-stone-50 transition";
+        row.innerHTML = `
+          <div class="flex items-center gap-3">
+            <img src="${p.image || 'https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=100&q=80'}" class="w-12 h-12 rounded-xl object-cover border border-stone-200">
+            <div>
+              <h5 class="text-xs font-bold text-amber-950">${p.name}</h5>
+              <span class="text-[11px] text-stone-500 uppercase font-semibold">${p.category} • <strong class="text-orange-700">R$ ${p.price.toFixed(2).replace('.', ',')}</strong></span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="toggleProductAvailability('${p.id}')" class="px-2.5 py-1 rounded-lg text-xs font-bold ${p.available ? 'bg-emerald-100 text-emerald-800' : 'bg-stone-200 text-stone-600'}">
+              ${p.available ? 'Ativo' : 'Pausado'}
+            </button>
+            <button onclick="openProductEditModal('${p.id}')" class="p-1.5 rounded-lg bg-amber-100 hover:bg-amber-200 text-amber-900 text-xs">
+              ✏️ Editar
+            </button>
+            <button onclick="deleteProduct('${p.id}')" class="p-1.5 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-800 text-xs">
+              🗑️
+            </button>
+          </div>
+        `;
+        list.appendChild(row);
+      });
+    }
+
+    function openProductEditModal(id) {
+      const modal = document.getElementById('product-edit-modal');
+      const title = document.getElementById('prod-modal-title');
+      const idInput = document.getElementById('prod-edit-id');
+
+      if (id) {
+        const prod = products.find(p => p.id === id);
+        if (!prod) return;
+        title.textContent = 'Editar Produto';
+        idInput.value = prod.id;
+        document.getElementById('prod-name').value = prod.name;
+        document.getElementById('prod-cat').value = prod.category;
+        document.getElementById('prod-price').value = prod.price;
+        document.getElementById('prod-desc').value = prod.desc || '';
+        document.getElementById('prod-img').value = prod.image || '';
+        document.getElementById('prod-badge').value = prod.badge || '';
+        document.getElementById('prod-avail').checked = prod.available !== false;
+      } else {
+        title.textContent = 'Novo Produto no Cardápio';
+        idInput.value = '';
+        document.getElementById('prod-name').value = '';
+        document.getElementById('prod-cat').value = currentCategory;
+        document.getElementById('prod-price').value = '';
+        document.getElementById('prod-desc').value = '';
+        document.getElementById('prod-img').value = 'https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=400&q=80';
+        document.getElementById('prod-badge').value = '';
+        document.getElementById('prod-avail').checked = true;
+      }
+      modal.classList.remove('hidden');
+    }
+
+    function closeProductEditModal() {
+      document.getElementById('product-edit-modal').classList.add('hidden');
+    }
+
+    function handleSaveProduct(e) {
+      e.preventDefault();
+      const id = document.getElementById('prod-edit-id').value;
+      const name = document.getElementById('prod-name').value.trim();
+      const category = document.getElementById('prod-cat').value;
+      const price = parseFloat(document.getElementById('prod-price').value);
+      const desc = document.getElementById('prod-desc').value.trim();
+      const image = document.getElementById('prod-img').value.trim();
+      const badge = document.getElementById('prod-badge').value.trim();
+      const available = document.getElementById('prod-avail').checked;
+
+      if (id) {
+        const index = products.findIndex(p => p.id === id);
+        if (index !== -1) {
+          products[index] = { ...products[index], name, category, price, desc, image, badge, available };
+        }
+      } else {
+        const newId = Date.now().toString();
+        products.push({ id: newId, name, category, price, desc, image, badge, available });
+      }
+
+      localStorage.setItem('bagueteria_products', JSON.stringify(products));
+      renderProductGrid();
+      renderAdminProductList();
+      closeProductEditModal();
+    }
+
+    function toggleProductAvailability(id) {
+      const prod = products.find(p => p.id === id);
+      if (prod) {
+        prod.available = !prod.available;
+        localStorage.setItem('bagueteria_products', JSON.stringify(products));
+        renderProductGrid();
+        renderAdminProductList();
+      }
+    }
+
+    function deleteProduct(id) {
+      if (confirm('Tem certeza que deseja excluir este produto do cardápio?')) {
+        products = products.filter(p => p.id !== id);
+        localStorage.setItem('bagueteria_products', JSON.stringify(products));
+        renderProductGrid();
+        renderAdminProductList();
+      }
+    }
+
+    function populateSettingsForm() {
+      document.getElementById('cfg-status-mode').value = storeConfig.statusMode || 'auto';
+      document.getElementById('cfg-phone').value = storeConfig.storePhone;
+      document.getElementById('cfg-address').value = storeConfig.storeAddress;
+      document.getElementById('cfg-coupon').value = storeConfig.activeCoupon;
+    }
+
+    function saveStoreSettings() {
+      storeConfig.statusMode = document.getElementById('cfg-status-mode').value;
+      storeConfig.storePhone = document.getElementById('cfg-phone').value.trim();
+      storeConfig.storePhoneRaw = storeConfig.storePhone.replace(/\D/g, '');
+      storeConfig.storeAddress = document.getElementById('cfg-address').value.trim();
+      storeConfig.activeCoupon = document.getElementById('cfg-coupon').value.trim().toUpperCase();
+
+      localStorage.setItem('bagueteria_config', JSON.stringify(storeConfig));
+      syncStoreConfigUI();
+      checkStoreHoursAutomation();
+      alert('Configurações e regras de funcionamento salvas com sucesso!');
+    }
+
+    function resetDefaults() {
+      if (confirm('Deseja restaurar o cardápio e configurações originais de fábrica?')) {
+        products = [...DEFAULT_PRODUCTS];
+        storeConfig = { ...DEFAULT_CONFIG };
+        localStorage.setItem('bagueteria_products', JSON.stringify(products));
+        localStorage.setItem('bagueteria_config', JSON.stringify(storeConfig));
+        syncStoreConfigUI();
+        checkStoreHoursAutomation();
+        renderProductGrid();
+        renderAdminProductList();
+        populateSettingsForm();
+      }
+    }
+
+    function syncStoreConfigUI() {
+      document.getElementById('store-phone-display').textContent = storeConfig.storePhone;
+      document.getElementById('header-phone-link').href = `tel:${storeConfig.storePhoneRaw}`;
+      document.getElementById('floating-whatsapp-btn').href = `https://wa.me/${storeConfig.storePhoneRaw}?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido%20na%20Bagueteria%20Artesanal!`;
+
+      document.getElementById('store-address-display').textContent = storeConfig.storeAddress;
+      document.getElementById('gps-modal-address').textContent = storeConfig.storeAddress;
+
+      document.getElementById('coupon-text').textContent = storeConfig.activeCoupon;
+      document.getElementById('cart-coupon-input').value = storeConfig.activeCoupon;
+    }
+
+    // =========================================================================
+    // NAVEGAÇÃO, FILTROS & BUSCA
+    // =========================================================================
+    function filterCategory(catKey, btnElement) {
+      currentCategory = catKey;
+      document.querySelectorAll('.category-pill').forEach(btn => {
+        btn.classList.remove('bg-[#572A14]', 'text-white');
+        btn.classList.add('bg-white', 'text-stone-700');
+      });
+      btnElement.classList.remove('bg-white', 'text-stone-700');
+      btnElement.classList.add('bg-[#572A14]', 'text-white');
+
+      const titles = {
+        'baguetes': { title: 'Baguetes Artesanais', sub: 'Baguetes de 22cm no pão crocante e recheios suculentos feitos na brasa e no tacho' },
+        'hamburguer': { title: 'Hambúrgueres Artesanais', sub: 'Smash burgers suculentos em pão brioche amanteigado' },
+        'refrigerantes': { title: 'Refrigerantes Gelados', sub: 'Bebidas trincando de geladas para a combinação perfeita' },
+        'cervejas': { title: 'Cervejas Artesanais & Especiais', sub: 'Rótulos selecionados para harmonizar com sua baguete' },
+        'sucos': { title: 'Sucos 100% Naturais', sub: 'Fruta fresca espremida na hora' },
+        'combos': { title: 'Combos & Porções', sub: 'Monte seu combo perfeito com batata e bebida' }
+      };
+
+      if (titles[catKey]) {
+        document.getElementById('category-heading').textContent = titles[catKey].title;
+        document.getElementById('category-subheading').textContent = titles[catKey].sub;
+      }
+
+      renderProductGrid();
+    }
+
+    function handleSearch(query) {
+      document.getElementById('clear-search-btn').classList.toggle('hidden', query.trim().length === 0);
+      renderProductGrid(query);
+    }
+
+    function resetSearch() {
+      document.getElementById('search-input').value = '';
+      document.getElementById('clear-search-btn').classList.add('hidden');
+      renderProductGrid();
+    }
+
+    function scrollToMenu() {
+      document.getElementById('menu-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function copyCoupon(code) {
+      navigator.clipboard.writeText(code).then(() => {
+        const feedback = document.getElementById('copy-feedback');
+        feedback.classList.remove('hidden');
+        setTimeout(() => feedback.classList.add('hidden'), 2500);
+      });
+    }
+
+    function closePromoBanner() {
+      const banner = document.getElementById('promo-banner');
+      banner.style.maxHeight = '0px';
+      banner.style.opacity = '0';
+      setTimeout(() => banner.remove(), 400);
+    }
+
+    // =========================================================================
+    // GPS & ROTAS
+    // =========================================================================
+    function openGpsModal(e) {
+      const btn = document.getElementById('gps-action-btn');
+      const ripple = document.createElement('span');
+      ripple.classList.add('ripple');
+      const rect = btn.getBoundingClientRect();
+      ripple.style.left = `${e.clientX - rect.left}px`;
+      ripple.style.top = `${e.clientY - rect.top}px`;
+      btn.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 700);
+
+      const modal = document.getElementById('gps-modal');
+      const card = document.getElementById('gps-modal-card');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+
+    function closeGpsModal() {
+      const modal = document.getElementById('gps-modal');
+      const card = document.getElementById('gps-modal-card');
+      card.classList.remove('scale-100', 'opacity-100');
+      card.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 250);
+    }
+
+    function copyAddressText() {
+      navigator.clipboard.writeText(storeConfig.storeAddress).then(() => {
+        document.getElementById('copy-addr-text').textContent = "✓ Endereço Copiado!";
+        document.getElementById('copy-addr-icon').textContent = "✅";
+        setTimeout(() => {
+          document.getElementById('copy-addr-text').textContent = "Copiar endereço completo";
+          document.getElementById('copy-addr-icon').textContent = "📋";
+        }, 2500);
+      });
+    }
+
+    // =========================================================================
+    // GESTÃO DO CARRINHO & CHECKOUT
+    // =========================================================================
+    function addToCart(name, price, event) {
+      const existing = cart.find(i => i.name === name);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ name, price, qty: 1 });
+      }
+
+      if (event && event.currentTarget) {
+        const btn = event.currentTarget;
+        btn.classList.add('scale-95');
+        setTimeout(() => btn.classList.remove('scale-95'), 150);
+        createFloatingPlusOne(event);
+      }
+
+      const cartBtn = document.getElementById('cart-btn');
+      cartBtn.classList.remove('cart-bounce-effect');
+      cartBtn.offsetHeight;
+      cartBtn.classList.add('cart-bounce-effect');
+
+      updateCartUI();
+    }
+
+    function createFloatingPlusOne(e) {
+      const tag = document.createElement('div');
+      tag.className = 'flying-tag text-xs sm:text-sm font-black';
+      tag.textContent = '+1 no Carrinho!';
+      tag.style.left = `${e.clientX - 20}px`;
+      tag.style.top = `${e.clientY - 20}px`;
+      document.body.appendChild(tag);
+      setTimeout(() => tag.remove(), 800);
+    }
+
+    function changeQty(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const totalItems = cart.reduce((acc, i) => acc + i.qty, 0);
+      const subtotal = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+
+      document.getElementById('cart-badge').textContent = `(${totalItems})`;
+
+      const container = document.getElementById('cart-items-container');
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-16 text-stone-400">
+            <span class="text-4xl block mb-2">🥖</span>
+            <p class="font-bold text-stone-700">Seu carrinho está vazio</p>
+            <p class="text-xs text-stone-500 mt-1">Escolha uma baguete crocante para começar!</p>
+          </div>
+        `;
+      } else {
+        container.innerHTML = cart.map((item, idx) => `
+          <div class="flex items-center justify-between p-3 rounded-2xl bg-amber-50/60 border border-amber-900/10 shadow-sm">
+            <div class="flex-1 pr-2">
+              <h4 class="text-xs sm:text-sm font-bold text-amber-950 leading-tight">${item.name}</h4>
+              <span class="text-xs font-semibold text-stone-500">R$ ${(item.price * item.qty).toFixed(2).replace('.', ',')}</span>
+            </div>
+            <div class="flex items-center gap-2 bg-white px-2 py-1 rounded-xl border border-stone-200 shadow-inner">
+              <button onclick="changeQty(${idx}, -1)" class="w-6 h-6 rounded-lg bg-stone-100 hover:bg-stone-200 font-bold text-xs text-stone-700">-</button>
+              <span class="text-xs font-bold text-stone-900 px-1">${item.qty}</span>
+              <button onclick="changeQty(${idx}, 1)" class="w-6 h-6 rounded-lg bg-orange-600 hover:bg-orange-500 font-bold text-xs text-white">+</button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      const custPreview = document.getElementById('cart-customer-preview');
+      if (customer && customer.name) {
+        custPreview.innerHTML = `
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="font-bold text-amber-950">📍 Entregar para: ${customer.name}</p>
+              <p class="text-stone-500 text-[11px]">${customer.street}, ${customer.number} ${customer.complement ? '- ' + customer.complement : ''} (${customer.neighborhood})</p>
+              <p class="text-stone-400 text-[10px]">Gmail: ${customer.email} • CEP: ${customer.cep}</p>
+            </div>
+            <button onclick="openCustomerAuthModal()" class="text-orange-600 font-bold text-[11px] hover:underline">Alterar</button>
+          </div>
+        `;
+      } else {
+        custPreview.innerHTML = `
+          <div class="flex items-center justify-between bg-amber-100/70 p-2.5 rounded-xl border border-amber-300">
+            <div class="text-amber-950">
+              <p class="font-bold text-xs">⚠️ Endereço não informado</p>
+              <p class="text-[10px] text-amber-800">Cadastre seu Gmail e CEP para entrega rápida</p>
+            </div>
+            <button onclick="openCustomerAuthModal()" class="bg-amber-900 text-amber-100 px-2.5 py-1 rounded-lg text-xs font-bold shadow">Entrar</button>
+          </div>
+        `;
+      }
+
+      document.getElementById('cart-subtotal').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+      document.getElementById('cart-total').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+    }
+
+    function openCartDrawer() {
+      const drawer = document.getElementById('cart-drawer');
+      const overlay = document.getElementById('cart-drawer-overlay');
+      overlay.classList.remove('hidden');
+      setTimeout(() => overlay.classList.add('opacity-100'), 10);
+      drawer.classList.remove('translate-x-full');
+    }
+
+    function closeCartDrawer() {
+      const drawer = document.getElementById('cart-drawer');
+      const overlay = document.getElementById('cart-drawer-overlay');
+      overlay.classList.remove('opacity-100');
+      drawer.classList.add('translate-x-full');
+      setTimeout(() => overlay.classList.add('hidden'), 300);
+    }
+
+    function checkoutViaWhatsApp() {
+      if (cart.length === 0) {
+        alert('Por favor, adicione pelo menos um item ao carrinho antes de finalizar!');
+        return;
+      }
+
+      if (!customer || !customer.name || !customer.street) {
+        if (confirm('Gostaria de cadastrar seu nome, Gmail, CEP e endereço completo para agilizar a entrega?')) {
+          openCustomerAuthModal();
+          return;
+        }
+      }
+
+      const storeStatus = getAutomatedStoreStatus();
+
+      let msg = `🥖 *NOVO PEDIDO - BAGUETERIA ARTESANAL*\n`;
+      if (!storeStatus.isOpen) {
+        msg += `⚠️ _[PRÉ-AGENDAMENTO - LOJA FECHADA NO MOMENTO]_\n`;
+      }
+      msg += `--------------------------------------\n`;
+      cart.forEach(item => {
+        msg += `• *${item.qty}x* ${item.name} = R$ ${(item.price * item.qty).toFixed(2).replace('.', ',')}\n`;
+      });
+      const subtotal = cart.reduce((acc, i) => acc + (i.price * i.qty), 0);
+      msg += `--------------------------------------\n`;
+      msg += `🎟️ *Cupom:* ${storeConfig.activeCoupon} (Frete Grátis)\n`;
+      msg += `💰 *TOTAL:* R$ ${subtotal.toFixed(2).replace('.', ',')}\n\n`;
+
+      if (customer && customer.name) {
+        msg += `👤 *DADOS DO CLIENTE*\n`;
+        msg += `• Nome: ${customer.name}\n`;
+        msg += `• Gmail: ${customer.email}\n`;
+        msg += `• Telefone: ${customer.phone}\n\n`;
+        msg += `📍 *ENDEREÇO DE ENTREGA*\n`;
+        msg += `• CEP: ${customer.cep}\n`;
+        msg += `• Endereço: ${customer.street}, Nº ${customer.number}\n`;
+        if (customer.complement) msg += `• Complemento: ${customer.complement}\n`;
+        msg += `• Bairro: ${customer.neighborhood} - ${customer.city}\n`;
+        if (customer.reference) msg += `• Referência: ${customer.reference}\n\n`;
+      } else {
+        msg += `📍 *Endereço de Entrega:* Informar aqui\n\n`;
+      }
+
+      msg += `💳 *Forma de Pagamento:* PIX / Cartão / Dinheiro\n`;
+
+      const encodedMsg = encodeURIComponent(msg);
+      window.open(`https://wa.me/${storeConfig.storePhoneRaw}?text=${encodedMsg}`, '_blank');
+    }
+
+    function openHistoryModal() {
+      document.getElementById('history-modal').classList.remove('hidden');
+    }
+
+    function closeHistoryModal() {
+      document.getElementById('history-modal').classList.add('hidden');
+    }
+
+    function repeatOrder(itemNames) {
+      itemNames.forEach(name => {
+        const prod = products.find(p => p.name.includes(name)) || products[0];
+        addToCart(prod.name, prod.price);
+      });
+      closeHistoryModal();
+      openCartDrawer();
+    }
+  </script>
+</body>
+</html>
